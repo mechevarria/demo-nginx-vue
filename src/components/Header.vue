@@ -4,9 +4,9 @@
     <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button">
       <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
-    <a class="c-header-brand d-lg-none c-header-brand-sm-up-center" href="#">
+    <router-link class="c-header-brand d-lg-none c-header-brand-sm-up-center" to="/">
       <img src="../assets/NS2-logo-blue.svg" alt="NS2 logo" width="86" />
-    </a>
+    </router-link>
 
     <!-- toggle sidebar -->
     <button
@@ -67,28 +67,23 @@
       </li>
     </ul>
 
-    <!-- breadcrumbs-->
-    <div class="c-subheader justify-content-between px-3">
-      <ol class="breadcrumb border-0 m-0 px-0 px-md-3">
-        <li class="breadcrumb-item">
-          <a href="#">Home</a>
-        </li>
-        <li class="breadcrumb-item active">
-          <span>Hello World</span>
-        </li>
-      </ol>
-    </div>
+    <Breadcrumbs />
   </header>
 </template>
 
 <script>
+import Breadcrumbs from './Breadcrumbs.vue'
+
 export default {
   name: "Header",
+  components: {
+    Breadcrumbs
+  },
   props: {
     username: {
       default: "Guest",
     },
-  },
+  }
 };
 </script>
 

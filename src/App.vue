@@ -5,7 +5,7 @@
       <Header />
       <main class="c-main">
         <div class="container-fluid">
-          <HelloWorld msg="Welcome to Your Vue.js App" />
+          <router-view></router-view>
         </div>
       </main>
       <Footer />
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Sidebar from "./components/Sidebar.vue";
@@ -22,12 +21,11 @@ import Sidebar from "./components/Sidebar.vue";
 export default {
   name: "App",
   components: {
-    HelloWorld,
     Header,
     Footer,
     Sidebar
-  },
-};
+  }
+}
 </script>
 
 <style>
