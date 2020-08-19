@@ -1,5 +1,9 @@
 # demo-nginx-vue
 
+**Work in Progress**
+
+Sample project integrating bootstrap based coreui with Vue
+
 ## Project setup
 ```
 npm install
