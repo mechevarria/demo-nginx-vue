@@ -13,6 +13,8 @@
       class="c-header-toggler c-class-toggler mfs-3 d-md-down-none"
       type="button"
       responsive="true"
+      data-target="#sidebar"
+      data-class="c-sidebar-lg-show"
     >
       <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
@@ -20,51 +22,50 @@
     <!-- top right menu -->
     <ul class="c-header-nav ml-auto">
       <!-- notification menu-->
-      <li class="c-header-nav-item d-md-down-none mx-2 dropdown" placement="bottom right">
-        <a
-          class="c-header-nav-link dropdown-toggle app-no-caret"
-          href
-          role="button"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i class="c-icon cil-bell"></i>
-          <span class="badge badge-pill badge-info">1</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
-          <div class="dropdown-header bg-light text-center app-pointer">
-            <strong class="app-underline">Clear Events</strong>
-          </div>
-          <a class="dropdown-item">
-            <i class="mr-1 c-icon cil-info text-info"></i>
-            Message received
+      <b-nav-item-dropdown
+        toggle-class="c-header-nav-link"
+        class="c-header-nav-item d-md-down-none mx-2 dropdown app-dropdown"
+        size="lg"
+        right
+        no-caret
+      >
+        <template v-slot:button-content>
+          <a role="button">
+            <i class="c-icon cil-bell"></i>
+            <span class="badge badge-pill badge-info">1</span>
           </a>
-        </div>
-      </li>
+        </template>
+        <b-dropdown-header class="bg-light text-center app-pointer">
+          <strong class="app-underline">Clear Events</strong>
+        </b-dropdown-header>
+        <b-dropdown-item>
+          <i class="mr-1 c-icon cil-info text-info"></i> Message received
+        </b-dropdown-item>
+      </b-nav-item-dropdown>
 
       <!-- User Menu -->
-      <li class="c-header-nav-item d-md-down-none mx-2 dropdown" placement="bottom right">
-        <a
-          class="c-header-nav-link dropdown-toggle mr-2"
-          href
-          role="button"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i class="mr-1 c-icon cil-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right pt-0" aria-labelledby="navbarDropdown">
-          <div class="dropdown-header bg-light text-center">
-            <strong>{{ username }}</strong>
-          </div>
-          <a class="dropdown-item app-pointer">
-            <i class="mr-1 c-icon cil-shield-alt"></i> Account
+      <b-nav-item-dropdown
+        toggle-class="c-header-nav-link"
+        class="c-header-nav-item d-md-down-none mx-2 dropdown app-dropdown"
+        size="lg"
+        right
+        no-caret
+      >
+        <template v-slot:button-content>
+          <a role="button">
+            <i class="mr-1 c-icon cil-user"></i>
           </a>
-          <a class="dropdown-item app-pointer">
-            <i class="mr-1 c-icon cil-account-logout"></i> Logout
-          </a>
-        </div>
-      </li>
+        </template>
+        <b-dropdown-header class="bg-light text-center">
+          <strong>{{ username }}</strong>
+        </b-dropdown-header>
+        <b-dropdown-item>
+          <i class="mr-1 c-icon cil-shield-alt"></i> Account
+        </b-dropdown-item>
+        <b-dropdown-item>
+          <i class="mr-1 c-icon cil-account-logout"></i> Logout
+        </b-dropdown-item>
+      </b-nav-item-dropdown>
     </ul>
 
     <Breadcrumbs />
@@ -72,37 +73,35 @@
 </template>
 
 <script>
-import Breadcrumbs from './Breadcrumbs.vue'
+import Breadcrumbs from "./Breadcrumbs.vue";
 
 export default {
   name: "Header",
   components: {
-    Breadcrumbs
+    Breadcrumbs,
   },
   props: {
     username: {
       default: "Guest",
     },
-  }
+  },
 };
 </script>
 
-<style scoped>
-.app-no-caret::after {
-  display: none;
+<style>
+/* style fix for dropdown menu */
+.app-dropdown > ul {
+  right: auto !important;
+  height: auto;
+  max-height: 500px;
+  overflow-x: hidden;
+  padding-top: 0px !important;
 }
-
 .app-pointer {
   cursor: pointer !important;
 }
 
 .app-underline:hover {
   text-decoration: underline;
-}
-
-.app-scrollable-menu {
-  height: auto;
-  max-height: 500px;
-  overflow-x: hidden;
 }
 </style>

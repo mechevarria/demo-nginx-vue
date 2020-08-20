@@ -29,8 +29,8 @@ export default {
 </script>
 
 <style>
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
 @import "~@coreui/coreui/dist/css/coreui.min.css";
 @import "~@coreui/icons/css/all.min.css";
-@import "~perfect-scrollbar/css/perfect-scrollbar.css";
 @import "~bootstrap-vue/dist/bootstrap-vue.css";
 </style>

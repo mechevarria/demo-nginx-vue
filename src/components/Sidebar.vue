@@ -1,5 +1,9 @@
 <template>
-  <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-show">
+  <div
+    class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show"
+    :class="{ 'c-sidebar-minimized': sideBarMin }"
+    id="sidebar"
+  >
     <div class="c-sidebar-brand d-md-down-none">
       <router-link to="/">
         <img
@@ -16,9 +20,8 @@
         />
       </router-link>
     </div>
-    <!-- add mouse-enter and mouse-leave functions -->
-    <ul class="c-sidebar-nav">
-      <!-- add active route class and close-on-mobile -->
+    <ul class="c-sidebar-nav" @mouseenter="handleMouse()" @mouseleave="handleMouse()">
+      <!-- TODO close-on-mobile -->
       <li class="c-sidebar-nav-item">
         <router-link class="c-sidebar-nav-link" to="/charts">
           <i class="c-sidebar-nav-icon cil-chart-pie"></i> Charts
@@ -35,12 +38,30 @@
         </a>
       </li>
     </ul>
-    <button class="c-sidebar-minimizer c-class-toggler" type="button"></button>
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" @click="toggleMin"></button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Sidebar"
+  name: "Sidebar",
+  data() {
+    return {
+      isMin: false,
+      sideBarMin: false
+    };
+  },
+  methods: {
+    toggleMin() {
+      this.isMin = !this.isMin;
+      this.sideBarMin = !this.sideBarMin;
+      console.log(this.isMin);
+    },
+    handleMouse() {
+      if (this.isMin) {
+        this.sideBarMin = !this.sideBarMin;
+      }
+    }
+  },
 };
 </script>
