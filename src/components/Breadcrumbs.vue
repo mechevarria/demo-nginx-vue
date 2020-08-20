@@ -13,7 +13,7 @@
 
 <script>
 export default {
-    name: "Breadcrumbs",
+    name: 'Breadcrumbs',
     computed : {
       nameNotHome() {
         return this.$route.name !== 'Home'
