@@ -13,8 +13,7 @@
       class="c-header-toggler c-class-toggler mfs-3 d-md-down-none"
       type="button"
       responsive="true"
-      data-target="#sidebar"
-      data-class="c-sidebar-lg-show"
+      @click="toggleSidebar"
     >
       <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
@@ -73,18 +72,24 @@
 </template>
 
 <script>
-import Breadcrumbs from "./Breadcrumbs.vue";
+import Breadcrumbs from './Breadcrumbs.vue';
+import { eventBus } from '../main';
 
 export default {
-  name: "Header",
+  name: 'Header',
   components: {
     Breadcrumbs,
   },
   props: {
     username: {
-      default: "Guest",
+      default: 'Guest',
     },
   },
+  methods: {
+    toggleSidebar() {
+      eventBus.$emit('toggleSidebar')
+    }
+  }
 };
 </script>
 

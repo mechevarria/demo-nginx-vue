@@ -1,7 +1,7 @@
 <template>
   <div
-    class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show"
-    :class="{ 'c-sidebar-minimized': sideBarMin }"
+    class="c-sidebar c-sidebar-dark c-sidebar-fixed"
+    :class="{ 'c-sidebar-minimized': sideBarMin, 'c-sidebar-lg-show': isShown }"
     id="sidebar"
   >
     <div class="c-sidebar-brand d-md-down-none">
@@ -43,11 +43,14 @@
 </template>
 
 <script>
+import { eventBus } from '../main';
+
 export default {
-  name: "Sidebar",
+  name: 'Sidebar',
   data() {
     return {
       isMin: false,
+      isShown: true,
       sideBarMin: false
     };
   },
@@ -63,5 +66,10 @@ export default {
       }
     }
   },
+  created() {
+    eventBus.$on('toggleSidebar', () => {
+      this.isShown = !this.isShown
+    });
+  }
 };
 </script>
