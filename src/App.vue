@@ -10,20 +10,37 @@
       </main>
       <Footer />
     </div>
+    <div :class="{'c-sidebar-backdrop c-fade c-show': isBackdrop && $isMobile()}" @click="doHide()"></div>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
-import Sidebar from "./components/Sidebar.vue";
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+import Sidebar from './components/Sidebar.vue';
+import { eventBus } from './main'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Header,
     Footer,
     Sidebar
+  },
+  data() {
+    return {
+      isBackdrop: false
+    }
+  },
+  methods: {
+    doHide() {
+      eventBus.$emit('toggleSidebar');
+    }
+  },
+  created() {
+    eventBus.$on('toggleSidebar', () => {
+      this.isBackdrop = !this.isBackdrop;
+    });
   }
 }
 </script>

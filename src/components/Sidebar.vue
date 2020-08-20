@@ -1,7 +1,7 @@
 <template>
   <div
     class="c-sidebar c-sidebar-dark c-sidebar-fixed"
-    :class="{ 'c-sidebar-minimized': sideBarMin, 'c-sidebar-lg-show': isShown }"
+    :class="{ 'c-sidebar-minimized': sideBarMin, 'c-sidebar-show': isShown }"
     id="sidebar"
   >
     <div class="c-sidebar-brand d-md-down-none">
@@ -23,12 +23,12 @@
     <ul class="c-sidebar-nav" @mouseenter="handleMouse()" @mouseleave="handleMouse()">
       <!-- TODO close-on-mobile -->
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/charts">
+        <router-link class="c-sidebar-nav-link" to="/charts"  @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-chart-pie"></i> Charts
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/table">
+        <router-link class="c-sidebar-nav-link" to="/table" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-list"></i> Table
         </router-link>
       </li>
@@ -58,18 +58,26 @@ export default {
     toggleMin() {
       this.isMin = !this.isMin;
       this.sideBarMin = !this.sideBarMin;
-      console.log(this.isMin);
     },
     handleMouse() {
       if (this.isMin) {
         this.sideBarMin = !this.sideBarMin;
       }
+    },
+    closeOnMobile() {
+      if(this.$isMobile()) {
+        eventBus.$emit('toggleSidebar')
+      }
     }
   },
   created() {
     eventBus.$on('toggleSidebar', () => {
-      this.isShown = !this.isShown
+      this.isShown = !this.isShown;
     });
+
+    if(this.$isMobile()) {
+      this.isShown = false;
+    }
   }
 };
 </script>

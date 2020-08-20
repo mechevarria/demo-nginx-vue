@@ -1,7 +1,7 @@
 <template>
   <header class="c-header c-header-light c-header-fixed">
     <!-- shown in mobile view -->
-    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button">
+    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" @click="toggleSidebar">
       <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
     <router-link class="c-header-brand d-lg-none c-header-brand-sm-up-center" to="/">

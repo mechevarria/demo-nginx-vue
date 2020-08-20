@@ -24,6 +24,7 @@
     "core-js": "^3.6.5",
     "perfect-scrollbar": "^1.5.0",
     "vue": "^2.6.11",
+    "vue-mobile-detection": "^1.0.0",
     "vue-router": "^3.4.3"
   },
   "devDependencies": {
@@ -48,7 +49,10 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "quotes" : ["error", "single"]
+      "quotes": [
+        "error",
+        "single"
+      ]
     }
   },
   "browserslist": [
