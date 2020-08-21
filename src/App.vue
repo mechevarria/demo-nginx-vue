@@ -1,43 +1,37 @@
 <template>
   <div id="app" class="c-app">
-    <Sidebar />
+    <AppSidebar />
     <div class="c-wrapper">
-      <Header />
+      <AppHeader />
       <main class="c-main">
         <div class="container-fluid">
           <router-view></router-view>
         </div>
       </main>
-      <Footer />
+      <AppFooter />
     </div>
     <div
-      :class="{'c-sidebar-backdrop c-fade c-show': sharedState.isSidebarShown && $isMobile()}"
+      :class="{'c-sidebar-backdrop c-fade c-show': $store.state.isSidebarShown && $isMobile()}"
       @click="doHide()"
     ></div>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
-import Sidebar from './components/Sidebar.vue'
-import store from './store'
+import AppHeader from './components/Header.vue'
+import AppFooter from './components/Footer.vue'
+import AppSidebar from './components/Sidebar.vue'
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Footer,
-    Sidebar
-  },
-  data() {
-    return {
-      sharedState: store.state
-    }
+    AppHeader,
+    AppFooter,
+    AppSidebar
   },
   methods: {
     doHide() {
-      store.toggleSidebarShown()
+      this.$store.commit('sidebarHide')
     }
   }
 }
