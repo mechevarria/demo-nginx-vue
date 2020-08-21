@@ -1,7 +1,7 @@
 <template>
   <div
     class="c-sidebar c-sidebar-dark c-sidebar-fixed"
-    :class="{ 'c-sidebar-minimized': sideBarMin, 'c-sidebar-show': isShown }"
+    :class="{ 'c-sidebar-minimized': sharedState.isSidebarMin, 'c-sidebar-show': sharedState.isSidebarShown }"
     id="sidebar"
   >
     <div class="c-sidebar-brand d-md-down-none">
@@ -20,10 +20,9 @@
         />
       </router-link>
     </div>
-    <ul class="c-sidebar-nav" @mouseenter="handleMouse()" @mouseleave="handleMouse()">
-      <!-- TODO close-on-mobile -->
+    <ul class="c-sidebar-nav" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/charts"  @click.native="closeOnMobile">
+        <router-link class="c-sidebar-nav-link" to="/charts" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-chart-pie"></i> Charts
         </router-link>
       </li>
@@ -43,41 +42,42 @@
 </template>
 
 <script>
-import { eventBus } from '../main';
+import store from '../store'
 
 export default {
   name: 'Sidebar',
   data() {
     return {
-      isMin: false,
-      isShown: true,
-      sideBarMin: false
-    };
+      sharedState: store.state,
+      isMouseEnter: false
+    }
   },
   methods: {
     toggleMin() {
-      this.isMin = !this.isMin;
-      this.sideBarMin = !this.sideBarMin;
+      store.toggleSidebarMin()
     },
-    handleMouse() {
-      if (this.isMin) {
-        this.sideBarMin = !this.sideBarMin;
+    mouseEnter() {
+      if (this.sharedState.isSidebarMin) {
+        store.toggleSidebarMin()
+        this.isMouseEnter = true
+      }
+    },
+    mouseLeave() {
+      if (this.isMouseEnter) {
+        store.toggleSidebarMin()
+        this.isMouseEnter = false
       }
     },
     closeOnMobile() {
-      if(this.$isMobile()) {
-        eventBus.$emit('toggleSidebar')
+      if (this.$isMobile()) {
+        store.toggleSidebarShown()
       }
     }
   },
   created() {
-    eventBus.$on('toggleSidebar', () => {
-      this.isShown = !this.isShown;
-    });
-
-    if(this.$isMobile()) {
-      this.isShown = false;
+    if (this.$isMobile() && this.sharedState.isSidebarShown) {
+        store.toggleSidebarShown()
     }
   }
-};
+}
 </script>

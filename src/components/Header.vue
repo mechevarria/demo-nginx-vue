@@ -1,7 +1,11 @@
 <template>
   <header class="c-header c-header-light c-header-fixed">
     <!-- shown in mobile view -->
-    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" @click="toggleSidebar">
+    <button
+      class="c-header-toggler c-class-toggler d-lg-none mfe-auto"
+      type="button"
+      @click="toggleSidebar"
+    >
       <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
     <router-link class="c-header-brand d-lg-none c-header-brand-sm-up-center" to="/">
@@ -56,7 +60,7 @@
           </a>
         </template>
         <b-dropdown-header class="bg-light text-center">
-          <strong>{{ username }}</strong>
+          <strong>Guest</strong>
         </b-dropdown-header>
         <b-dropdown-item>
           <i class="mr-1 c-icon cil-shield-alt"></i> Account
@@ -72,25 +76,20 @@
 </template>
 
 <script>
-import Breadcrumbs from './Breadcrumbs.vue';
-import { eventBus } from '../main';
+import Breadcrumbs from './Breadcrumbs.vue'
+import store from '../store'
 
 export default {
   name: 'Header',
   components: {
-    Breadcrumbs,
-  },
-  props: {
-    username: {
-      default: 'Guest',
-    },
+    Breadcrumbs
   },
   methods: {
     toggleSidebar() {
-      eventBus.$emit('toggleSidebar')
+      store.toggleSidebarShown()
     }
   }
-};
+}
 </script>
 
 <style>

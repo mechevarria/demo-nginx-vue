@@ -10,8 +10,6 @@ import routes from './routes'
 
 Vue.config.productionTip = false
 
-export const eventBus = new Vue();
-
 Vue.use(VueRouter)
 Vue.use(DropdownPlugin)
 Vue.use(ToastPlugin)

@@ -10,15 +10,18 @@
       </main>
       <Footer />
     </div>
-    <div :class="{'c-sidebar-backdrop c-fade c-show': isBackdrop && $isMobile()}" @click="doHide()"></div>
+    <div
+      :class="{'c-sidebar-backdrop c-fade c-show': sharedState.isSidebarShown && $isMobile()}"
+      @click="doHide()"
+    ></div>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-import Sidebar from './components/Sidebar.vue';
-import { eventBus } from './main'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import Sidebar from './components/Sidebar.vue'
+import store from './store'
 
 export default {
   name: 'App',
@@ -29,25 +32,20 @@ export default {
   },
   data() {
     return {
-      isBackdrop: false
+      sharedState: store.state
     }
   },
   methods: {
     doHide() {
-      eventBus.$emit('toggleSidebar');
+      store.toggleSidebarShown()
     }
-  },
-  created() {
-    eventBus.$on('toggleSidebar', () => {
-      this.isBackdrop = !this.isBackdrop;
-    });
   }
 }
 </script>
 
 <style>
-@import "~perfect-scrollbar/css/perfect-scrollbar.css";
-@import "~@coreui/coreui/dist/css/coreui.min.css";
-@import "~@coreui/icons/css/all.min.css";
-@import "~bootstrap-vue/dist/bootstrap-vue.css";
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+@import '~@coreui/coreui/dist/css/coreui.min.css';
+@import '~@coreui/icons/css/all.min.css';
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
 </style>
