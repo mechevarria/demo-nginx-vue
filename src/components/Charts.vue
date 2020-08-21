@@ -13,6 +13,6 @@
 
 <script>
 export default {
-  name: 'Charts'
+  name: 'AppCharts'
 };
 </script>

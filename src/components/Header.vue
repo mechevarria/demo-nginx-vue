@@ -71,22 +71,21 @@
       </b-nav-item-dropdown>
     </ul>
 
-    <Breadcrumbs />
+    <AppBreadcrumbs />
   </header>
 </template>
 
 <script>
-import Breadcrumbs from './Breadcrumbs.vue'
-import store from '../store'
+import AppBreadcrumbs from './Breadcrumbs.vue'
 
 export default {
-  name: 'Header',
+  name: 'AppHeader',
   components: {
-    Breadcrumbs
+    AppBreadcrumbs
   },
   methods: {
     toggleSidebar() {
-      store.toggleSidebarShown()
+      this.$store.commit('toggleSidebarShown')
     }
   }
 }

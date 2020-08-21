@@ -1,7 +1,7 @@
 <template>
   <div
     class="c-sidebar c-sidebar-dark c-sidebar-fixed"
-    :class="{ 'c-sidebar-minimized': sharedState.isSidebarMin, 'c-sidebar-show': sharedState.isSidebarShown }"
+    :class="{ 'c-sidebar-minimized': $store.state.isSidebarMin, 'c-sidebar-show': $store.state.isSidebarShown }"
     id="sidebar"
   >
     <div class="c-sidebar-brand d-md-down-none">
@@ -42,41 +42,38 @@
 </template>
 
 <script>
-import store from '../store'
-
 export default {
-  name: 'Sidebar',
+  name: 'AppSidebar',
   data() {
     return {
-      sharedState: store.state,
       isMouseEnter: false
     }
   },
   methods: {
     toggleMin() {
-      store.toggleSidebarMin()
+      this.$store.commit('toggleSidebarMin')
     },
     mouseEnter() {
-      if (this.sharedState.isSidebarMin) {
-        store.toggleSidebarMin()
+      if (this.$store.state.isSidebarMin) {
+        this.$store.commit('sidebarMax')
         this.isMouseEnter = true
       }
     },
     mouseLeave() {
       if (this.isMouseEnter) {
-        store.toggleSidebarMin()
+        this.$store.commit('sidebarMin')
         this.isMouseEnter = false
       }
     },
     closeOnMobile() {
       if (this.$isMobile()) {
-        store.toggleSidebarShown()
+        this.$store.commit('sidebarHide')
       }
     }
   },
   created() {
-    if (this.$isMobile() && this.sharedState.isSidebarShown) {
-        store.toggleSidebarShown()
+    if (this.$isMobile() && this.$store.state.isSidebarShown) {
+      this.$store.commit('sidebarHide')
     }
   }
 }

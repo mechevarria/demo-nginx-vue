@@ -16,7 +16,7 @@
 <script>
 
 export default {
-  name: 'Table',
+  name: 'AppTable',
   methods: {
     showToast(msg) {
       this.$bvToast.toast(msg, {
