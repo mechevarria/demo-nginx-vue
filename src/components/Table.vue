@@ -5,8 +5,6 @@
       <div class="card-body">
         <div class="card-text">
           Table Component
-          <br />
-          <button class="btn btn-primary" @click="showToast('Send Test Message')">Show Toast</button>
         </div>
       </div>
     </div>
@@ -14,18 +12,7 @@
 </template>
 
 <script>
-
 export default {
-  name: 'AppTable',
-  methods: {
-    showToast(msg) {
-      this.$bvToast.toast(msg, {
-        toaster: 'b-toaster-bottom-center',
-        variant: 'success',
-        solid: true,
-        noCloseButton: true
-      });
-    }
-  }
-};
+  name: 'AppTable'
+}
 </script>

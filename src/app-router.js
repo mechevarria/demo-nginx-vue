@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import AppHome from './components/Home.vue'
-import AppCharts from './components/Charts.vue'
+import AppForm from './components/Form.vue'
 import AppTable from './components/Table.vue'
 
 Vue.use(VueRouter)
@@ -11,9 +11,9 @@ const routes = [{
     component: AppHome,
     name: 'Home'
 }, {
-    path: '/charts',
-    component: AppCharts,
-    name: 'Charts'
+    path: '/form',
+    component: AppForm,
+    name: 'Form'
 }, {
     path: '/table',
     component: AppTable,

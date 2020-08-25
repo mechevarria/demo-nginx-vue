@@ -1,7 +1,7 @@
 <template>
   <div
     class="c-sidebar c-sidebar-dark c-sidebar-fixed"
-    :class="{ 'c-sidebar-minimized': $store.state.isSidebarMin, 'c-sidebar-show': $store.state.isSidebarShown }"
+    :class="{ 'c-sidebar-minimized': isSidebarMin, 'c-sidebar-show': isSidebarShown }"
     id="sidebar"
   >
     <div class="c-sidebar-brand d-md-down-none">
@@ -22,8 +22,8 @@
     </div>
     <ul class="c-sidebar-nav" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/charts" @click.native="closeOnMobile">
-          <i class="c-sidebar-nav-icon cil-chart-pie"></i> Charts
+        <router-link class="c-sidebar-nav-link" to="/form" @click.native="closeOnMobile">
+          <i class="c-sidebar-nav-icon cil-notes"></i> Form
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'AppSidebar',
   data() {
@@ -49,12 +51,13 @@ export default {
       isMouseEnter: false
     }
   },
+  computed: mapState(['isSidebarMin', 'isSidebarShown']),
   methods: {
     toggleMin() {
       this.$store.commit('toggleSidebarMin')
     },
     mouseEnter() {
-      if (this.$store.state.isSidebarMin) {
+      if (this.isSidebarMin) {
         this.$store.commit('sidebarMax')
         this.isMouseEnter = true
       }
@@ -72,7 +75,7 @@ export default {
     }
   },
   created() {
-    if (this.$isMobile() && this.$store.state.isSidebarShown) {
+    if (this.$isMobile() && this.isSidebarShown) {
       this.$store.commit('sidebarHide')
     }
   }

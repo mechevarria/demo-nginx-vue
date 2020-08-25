@@ -14,6 +14,7 @@
       :class="{'c-sidebar-backdrop c-fade c-show': $store.state.isSidebarShown && $isMobile()}"
       @click="doHide()"
     ></div>
+    <AppToast />
   </div>
 </template>
 
@@ -21,13 +22,15 @@
 import AppHeader from './components/Header.vue'
 import AppFooter from './components/Footer.vue'
 import AppSidebar from './components/Sidebar.vue'
+import AppToast from './components/Toast.vue'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppFooter,
-    AppSidebar
+    AppSidebar,
+    AppToast
   },
   methods: {
     doHide() {
