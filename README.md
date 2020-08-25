@@ -4,6 +4,8 @@
 
 Sample project integrating bootstrap based coreui with [Vue](https://vuejs.org/)
 
+![form](screenshots/form.png)
+
 ## Integration and Links
 
 * [Style Guide](https://vuejs.org/v2/style-guide/) for Vue. Attempting to follow as best as possible
