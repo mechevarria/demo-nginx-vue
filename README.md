@@ -8,6 +8,7 @@ Sample project integrating bootstrap based coreui with [Vue](https://vuejs.org/)
 
 ## Integration and Links
 
+* [Vue cli](https://cli.vuejs.org/) used to generate this project
 * [Style Guide](https://vuejs.org/v2/style-guide/) for Vue. Attempting to follow as best as possible
 * [CoreUI Bootstrap](https://coreui.io) theme
 * [Bootstrap-Vue](https://bootstrap-vue.org/) components
