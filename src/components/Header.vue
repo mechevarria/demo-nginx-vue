@@ -35,14 +35,15 @@
         <template v-slot:button-content>
           <a role="button">
             <i class="c-icon cil-bell"></i>
-            <span class="badge badge-pill badge-info">1</span>
+            <span class="badge badge-pill badge-info" v-if="messages.length > 0">{{messages.length}}</span>
           </a>
         </template>
-        <b-dropdown-header class="bg-light text-center app-pointer">
+        <b-dropdown-header class="bg-light text-center app-pointer" @click="clear">
           <strong class="app-underline">Clear Events</strong>
         </b-dropdown-header>
-        <b-dropdown-item>
-          <i class="mr-1 c-icon cil-info text-info"></i> Message received
+        <b-dropdown-item v-for="(msg, key) in messages" :key="key">
+          <i :class="[msg.iconClass, msg.textClass]" class="mr-1 c-icon"></i>
+          {{ msg.text }}
         </b-dropdown-item>
       </b-nav-item-dropdown>
 
@@ -77,15 +78,20 @@
 
 <script>
 import AppBreadcrumbs from './Breadcrumbs.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'AppHeader',
   components: {
     AppBreadcrumbs
   },
+  computed: mapState(['messages']),
   methods: {
     toggleSidebar() {
       this.$store.commit('toggleSidebarShown')
+    },
+    clear() {
+      this.$store.commit('clearMessages')
     }
   }
 }

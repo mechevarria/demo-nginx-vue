@@ -26,36 +26,48 @@ export default {
   },
   created() {
     eventBus.$on('info', (text) => {
-      this.msg.text = text
-      this.msg.variant = 'info'
-      this.msg.title = 'Information'
-      this.msg.iconClass = 'cil-info'
-      this.msg.textClass = 'text-info'
+      this.msg = {
+        text: text,
+        variant: 'info',
+        title: 'Information',
+        iconClass: 'cil-info',
+        textClass: 'text-info'
+      }
       this.$bvToast.show('toast-msg')
+      this.$store.commit('addMessage', this.msg)
     })
     eventBus.$on('success', (text) => {
-      this.msg.text = text
-      this.msg.variant = 'success'
-      this.msg.title = 'Success'
-      this.msg.iconClass = 'cil-check-circle'
-      this.msg.textClass = 'text-success'
+      this.msg = {
+        text: text,
+        variant: 'success',
+        title: 'Success',
+        iconClass: 'cil-check-circle',
+        textClass: 'text-success'
+      }
       this.$bvToast.show('toast-msg')
+      this.$store.commit('addMessage', this.msg)
     })
     eventBus.$on('warning', (text) => {
-      this.msg.text = text
-      this.msg.variant = 'warning'
-      this.msg.title = 'Warning'
-      this.msg.iconClass = 'cil-warning'
-      this.msg.textClass = 'text-warning'
+      this.msg = {
+        text: text,
+        variant: 'warning',
+        title: 'Warning',
+        iconClass: 'cil-warning',
+        textClass: 'text-warning'
+      }
       this.$bvToast.show('toast-msg')
+      this.$store.commit('addMessage', this.msg)
     })
     eventBus.$on('error', (text) => {
-      this.msg.text = text
-      this.msg.variant = 'danger'
-      this.msg.title = 'Error'
-      this.msg.iconClass = 'cil-x-circle'
-      this.msg.textClass = 'text-danger'
+      this.msg = {
+        text: text,
+        variant: 'danger',
+        title: 'Error',
+        iconClass: 'cil-x-circle',
+        textClass: 'text-danger'
+      }
       this.$bvToast.show('toast-msg')
+      this.$store.commit('addMessage', this.msg)
     })
   }
 }

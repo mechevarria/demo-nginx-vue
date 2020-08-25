@@ -2,7 +2,7 @@
 
 **Work in Progress**
 
-Sample project integrating bootstrap based coreui with [Vue](https://vuejs.org/)
+Sample project integrating bootstrap based coreui with [Vue](https://vuejs.org/). Initial scafold done with Vue CLI.
 
 ![form](screenshots/form.png)
 

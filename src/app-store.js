@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         isSidebarMin: false,
-        isSidebarShown: true
+        isSidebarShown: true,
+        messages: []
     },
     mutations: {
         toggleSidebarMin(state) {
@@ -26,6 +27,12 @@ const store = new Vuex.Store({
         },
         sidebarShow(state) {
             state.isSidebarShown = true
+        },
+        addMessage(state, msg) {
+            state.messages.push(msg)
+        },
+        clearMessages(state) {
+            state.messages = [];
         }
     }
 })
