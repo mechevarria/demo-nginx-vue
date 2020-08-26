@@ -15,6 +15,8 @@ Sample project integrating bootstrap based coreui with [Vue](https://vuejs.org/)
 * [Vue Router](https://router.vuejs.org/) for view management
 * [Vuex](https://vuex.vuejs.org/) for state management
 * [vue-mobile-detection](https://github.com/ajerez/vue-mobile-detection) for checking mobile state
+* [axios](https://github.com/axios/axios) as http client
+* [jsonplaceholder](https://jsonplaceholder.typicode.com/) for sample table data
 
 ## Project setup
 ```
