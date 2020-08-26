@@ -26,6 +26,7 @@
     <ul class="c-header-nav ml-auto">
       <!-- notification menu-->
       <b-nav-item-dropdown
+        ref="dropdown"
         toggle-class="c-header-nav-link"
         class="c-header-nav-item d-md-down-none mx-2 dropdown app-dropdown"
         size="lg"
@@ -42,7 +43,7 @@
           <strong class="app-underline">Clear Events</strong>
         </b-dropdown-header>
         <b-dropdown-item v-for="(msg, key) in messages" :key="key">
-          <i :class="[msg.iconClass, msg.textClass]" class="mr-1 c-icon"></i>
+          <i :class="[msg.iconClass, msg.textClass]" class="mr-2 c-icon"></i>
           {{ msg.text }}
         </b-dropdown-item>
       </b-nav-item-dropdown>
@@ -92,6 +93,7 @@ export default {
     },
     clear() {
       this.$store.commit('clearMessages')
+      this.$refs.dropdown.hide(true)
     }
   }
 }

@@ -27,12 +27,11 @@
         </div>
         <div class="card-footer">
           <button type="submit" class="btn btn-sm btn-primary mr-1" :disabled="isBusy">
-            <i class="cil-check-circle btn-icon" v-if="!isBusy"></i>
-            <i class="spinner-border spinner-border-sm" v-if="isBusy"></i>
-             Submit
+            <i class="cil-check-circle btn-icon mr-1" v-if="!isBusy"></i>
+            <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i>Submit
           </button>
           <button type="button" class="btn btn-sm btn-danger" @click="clear" :disabled="isBusy">
-            <i class="cil-x-circle btn-icon"></i> Clear
+            <i class="cil-x-circle btn-icon mr-1"></i>Clear
           </button>
         </div>
       </form>
@@ -41,10 +40,11 @@
 </template>
 
 <script>
-import eventBus from '../event-bus'
+import msgMixin from '../mixins/msg-mixin'
 
 export default {
   name: 'AppForm',
+  mixins: [msgMixin],
   data() {
     return {
       text: null,
@@ -56,7 +56,20 @@ export default {
     handleSubmit() {
       this.isBusy = true
       setTimeout(() => {
-        eventBus.$emit(this.type, this.text)
+        switch (this.type) {
+          case 'info':
+            this.infoMsg(this.text)
+            break
+          case 'success':
+            this.successMsg(this.text)
+            break
+          case 'warning':
+            this.warningMsg(this.text)
+            break
+          case 'error':
+            this.errorMsg(this.text)
+            break
+        }
         this.isBusy = false
       }, 500)
     },
