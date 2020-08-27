@@ -1,10 +1,30 @@
 <template>
-  <div class="card-deck">
+  <div class="card-deck mb-3">
     <div class="card">
       <div class="card-header">Table</div>
       <div class="card-body">
         <div class="card-text">
-          <b-table striped :items="json" responsive bordered></b-table>
+          <p>
+            Displaying {{start}} to {{start + perPage}} of
+            <strong>{{count}}</strong>
+            total
+            <b-form-select
+              v-model="selected"
+              :options="options"
+              :disabled="isBusy"
+              v-on:input="getData"
+            ></b-form-select>
+          </p>
+          <b-table striped :items="data" responsive bordered ref="table"></b-table>
+          <div class="d-flex">
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="count"
+              :per-page="perPage"
+              v-on:input="getData"
+              :disabled="isBusy"
+            ></b-pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -20,26 +40,44 @@ export default {
   mixins: [msgMixin],
   data() {
     return {
-      json: []
+      count: 0,
+      perPage: 10,
+      currentPage: 1,
+      start: 0,
+      data: [],
+      isBusy: false,
+      options: ['comments', 'posts', 'albums', 'todos', 'users'],
+      selected: 'comments'
     }
   },
   methods: {
-    getComments() {
-      const url = '/jsonplaceholder/posts'
+    getData() {
+      this.isBusy = true
+      this.start = (this.currentPage - 1) * this.perPage
+      const options = {
+        params: {
+          _limit: this.perPage,
+          _start: this.start
+        }
+      }
+      const url = `/jsonplaceholder/${this.selected}`
       axios
-        .get(url)
+        .get(url, options)
         .then((res) => {
-          this.json = res.data
+          this.data = res.data
+          this.count = res.headers['x-total-count']
         })
         .catch((err) => {
-          this.json = []
           console.error(err)
-          this.errorMsg(url, err.message)
+          this.errorMsg(err.message)
+        })
+        .finally(() => {
+          this.isBusy = false
         })
     }
   },
   created() {
-    this.getComments()
+    this.getData()
   }
 }
 </script>
