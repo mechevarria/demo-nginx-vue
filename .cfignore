@@ -1,0 +1,11 @@
+node_modules
+screenshots
+Dockerfile*
+default.conf
+docker-*
+*.code-workspace
+.vscode
+src
+*.config.js
+package*.json
+public
