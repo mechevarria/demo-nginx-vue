@@ -22,12 +22,12 @@
     </div>
     <ul class="c-sidebar-nav" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/form" @click.native="closeOnMobile">
+        <router-link class="c-sidebar-nav-link" to="/home/form" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-notes"></i> Form
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/table" @click.native="closeOnMobile">
+        <router-link class="c-sidebar-nav-link" to="/home/table" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-list"></i> Table
         </router-link>
       </li>

@@ -7,20 +7,20 @@ import AppTable from './components/Table.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
+    path: '/home',
     component: AppHome,
     name: 'Home'
 }, {
-    path: '/form',
+    path: '/home/form',
     component: AppForm,
     name: 'Form'
 }, {
-    path: '/table',
+    path: '/home/table',
     component: AppTable,
     name: 'Table'
 }, {
     path: '*',
-    redirect: '/'
+    redirect: '/home'
 }]
 
 const router = new VueRouter({
