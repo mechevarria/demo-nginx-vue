@@ -30,7 +30,7 @@
             <i class="cil-check-circle btn-icon mr-1" v-if="!isBusy"></i>
             <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i>Submit
           </button>
-          <button type="button" class="btn btn-sm btn-danger" @click="clear" :disabled="isBusy">
+          <button type="button" class="btn btn-sm btn-secondary" @click="clear" :disabled="isBusy">
             <i class="cil-x-circle btn-icon mr-1"></i>Clear
           </button>
         </div>

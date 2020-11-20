@@ -37,9 +37,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+// $theme-colors: (
+//   "primary": #226499
+// );
+
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
-@import '~@coreui/coreui/dist/css/coreui.min.css';
+@import '~@coreui/coreui/scss/coreui';
 @import '~@coreui/icons/css/all.min.css';
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 </style>
