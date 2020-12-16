@@ -1,21 +1,15 @@
 <template>
   <div class="card-deck mb-3">
     <div class="card">
-      <div class="card-header">Table</div>
+      <div class="card-header"><i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i> Table</div>
       <div class="card-body">
         <div class="card-text">
           <p>
             Displaying {{start}} to {{start + perPage}} of
             <strong>{{count}}</strong>
-            total
-            <b-form-select
-              v-model="selected"
-              :options="options"
-              :disabled="isBusy"
-              v-on:input="getData"
-            ></b-form-select>
+            total comments
           </p>
-          <b-table striped :items="data" responsive bordered ref="table"></b-table>
+          <b-table striped :items="data" responsive bordered ref="table" @row-clicked="onRowClick" :tbody-tr-class="'app-pointer'"></b-table>
           <div class="d-flex">
             <b-pagination
               v-model="currentPage"
@@ -45,12 +39,13 @@ export default {
       currentPage: 1,
       start: 0,
       data: [],
-      isBusy: false,
-      options: ['comments', 'posts', 'albums', 'todos', 'users'],
-      selected: 'comments'
+      isBusy: false
     }
   },
   methods: {
+    onRowClick(row) {
+      this.$router.push({path: `/home/table/${row.id}`})
+    },
     getData() {
       this.isBusy = true
       this.start = (this.currentPage - 1) * this.perPage
@@ -60,7 +55,7 @@ export default {
           _start: this.start
         }
       }
-      const url = `/jsonplaceholder/${this.selected}`
+      const url = '/jsonplaceholder/comments'
       axios
         .get(url, options)
         .then((res) => {
@@ -81,3 +76,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.app-pointer {
+  cursor: pointer;
+}
+</style>
