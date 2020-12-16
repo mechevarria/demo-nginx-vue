@@ -3,21 +3,25 @@ import VueRouter from 'vue-router'
 import AppHome from './components/Home.vue'
 import AppForm from './components/Form.vue'
 import AppTable from './components/Table.vue'
+import AppDetail from './components/Detail.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
     path: '/home',
     component: AppHome,
-    name: 'Home'
+    name: 'home'
 }, {
     path: '/home/form',
     component: AppForm,
-    name: 'Form'
+    name: 'form'
 }, {
     path: '/home/table',
     component: AppTable,
-    name: 'Table'
+    name: 'table'
+}, {
+    path: '/home/table/:id',
+    component: AppDetail
 }, {
     path: '*',
     redirect: '/home'
