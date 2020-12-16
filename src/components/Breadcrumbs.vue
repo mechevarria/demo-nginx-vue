@@ -5,9 +5,10 @@
         class="breadcrumb-item"
         v-for="(route, index) in breadcrumbs"
         :key="index"
+        v-bind:class="{ active: index === breadcrumbs.length -1}"
       >
         <router-link v-if="index !== breadcrumbs.length -1" :to="{ name: route }">{{ upperFirst(route) }}</router-link>
-        <span v-else class="active">{{ upperFirst(route) }}</span>
+        <span v-else>{{ upperFirst(route) }}</span>
       </li>
     </ol>
   </div>
@@ -30,3 +31,4 @@ export default {
   }
 }
 </script>
+
