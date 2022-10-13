@@ -1,6 +1,6 @@
 # demo-nginx-vue
 
-Sample web application integrating bootstrap based coreui with [Vue](https://vuejs.org/). Initial scafold done with Vue CLI. The project can be deployed as a [docker](https://docs.docker.com/install/) container or pushed directly with a [buildpack](https://docs.cloudfoundry.org/buildpacks/nginx/index.html) to [SAP Cloud Platform](https://www.sap.com/products/cloud-platform.html)
+Sample web application integrating bootstrap based coreui with [Vue](https://vuejs.org/). Initial scafold done with Vue CLI. The project can be deployed as a [docker](https://docs.docker.com/install/) container or pushed directly with a [buildpack](https://docs.cloudfoundry.org/buildpacks/nginx/index.html) to [Microsoft Azure](https://azure.microsoft.com/en-us/)
 
 ![form](screenshots/form.png)
 
@@ -17,6 +17,9 @@ Sample web application integrating bootstrap based coreui with [Vue](https://vue
 * [jsonplaceholder](https://jsonplaceholder.typicode.com/) for sample table data
 
 ## Project setup
+
+* Install a [nodejs](https://nodejs.org/en/download/) runtime is installed (LTS)
+
 ```
 npm install
 ```
@@ -47,19 +50,9 @@ docker-run.sh
 
 * The server will be running on [http://localhost:4200](http://localhost:4200)
 
-## Deploy to SAP Cloud Platform
+## Deploy to Microsoft Azure
 
->You can create an account for free at [SAP Cloud Platform](https://www.sap.com/products/cloud-platform.html)
-
-* Make sure you have the [Cloud Foundry Command Line Interface (cf CLI)](https://docs.cloudfoundry.org/cf-cli/) installed
-
-* Update the `cf-login.sh` script with the values found in the SAP Cloud Foundry Cockpit. Then run the script to login.
-
-```bash
-cf-login.sh
-```
-
-![image.png](screenshots/cf-cockpit.png)
+> TODO
 
 ### Docker
 
@@ -68,17 +61,3 @@ cf-login.sh
 ```bash
 cf-push-docker.sh
 ```
-
-### Buildpack
-
-* Push your code directly without the need of a container registry with the following commands (make sure you have done a build ahead of time)
-
-
-```bash
-cf-push-buildpack.sh
-```
-
-* You will find a url to your deployed application in the SAP Cloud Foundry Cockpit.
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -8,15 +8,15 @@
       <router-link to="/">
         <img
           class="c-sidebar-brand-full"
-          src="../assets/NS2-logo-white.svg"
-          alt="NS2 logo"
-          width="86"
+          src="../assets/symphony-ai-logo-white.svg"
+          alt="SAI logo"
+          width="150"
         />
         <img
           class="c-sidebar-brand-minimized"
-          src="../assets/NS2-icon-white.svg"
-          height="30"
-          alt="NS2 Logo"
+          src="../assets/symphony-ai-icon-white.svg"
+          width="30"
+          alt="SAI Logo"
         />
       </router-link>
     </div>

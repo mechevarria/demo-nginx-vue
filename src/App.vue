@@ -11,7 +11,7 @@
       <AppFooter />
     </div>
     <div
-      :class="{'c-sidebar-backdrop c-fade c-show': $store.state.isSidebarShown && $isMobile()}"
+      :class="{'c-sidebar-backdrop c-fade c-show': this.$store.state.isSidebarShown && $isMobile()}"
       @click="doHide()"
     ></div>
   </div>
@@ -38,9 +38,6 @@ export default {
 </script>
 
 <style lang="scss">
-// $theme-colors: (
-//   "primary": #226499
-// );
 
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 @import '~@coreui/coreui/scss/coreui';

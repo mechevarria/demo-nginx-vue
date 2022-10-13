@@ -9,7 +9,7 @@
       <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
     <router-link class="c-header-brand d-lg-none c-header-brand-sm-up-center" to="/">
-      <img src="../assets/NS2-logo-blue.svg" alt="NS2 logo" width="86" />
+      <img src="../assets/symphony-ai-logo-full-color.svg" alt="SAI logo" width="150" />
     </router-link>
 
     <!-- toggle sidebar -->

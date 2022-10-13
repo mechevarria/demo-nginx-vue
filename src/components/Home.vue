@@ -30,13 +30,13 @@
           <p class="card-text">This application source is deployable on</p>
           <ul class="list-group">
             <li class="list-group-item">
-              <a target="_blank" href="https://cloudplatform.sap.com" title="SAP Cloud Platform">
-                <img src="../assets/sap.png" height="45" alt="SAP Cloud Platform" /> SAP Cloud Platform
+              <a target="_blank" href="https://cloudplatform.sap.com" title="Microsoft Azure">
+                <img src="../assets/Microsoft_Azure_Logo.svg" height="35" alt="Microsoft Azure" class="mr-2" /> Microsoft Azure
               </a>
             </li>
             <li class="list-group-item">
               <a target="_blank" href="https://www.docker.com" title="docker container">
-                <img src="../assets/docker.svg" height="50" alt="docker" class="mr-2" /> docker container
+                <img src="../assets/docker.svg" height="40" alt="docker" class="mr-2" /> docker container
               </a>
             </li>
             <li class="list-group-item">
