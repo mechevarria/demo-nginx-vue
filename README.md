@@ -48,7 +48,7 @@ docker-build.sh
 docker-run.sh
 ```
 
-* The server will be running on [http://localhost:4200](http://localhost:4200)
+* The server will be running on [http://localhost:5000](http://localhost:5000)
 
 ## Deploy to Microsoft Azure
 
