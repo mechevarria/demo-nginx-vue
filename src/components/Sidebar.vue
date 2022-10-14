@@ -69,7 +69,8 @@ export default {
       }
     },
     closeOnMobile() {
-      if (this.$isMobile()) {
+      // iPad was not getting caught by the isMobile component
+      if (this.$isMobile() || navigator.userAgent.includes('iPad')) {
         this.$store.commit('sidebarHide')
       }
     }
